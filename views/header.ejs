@@ -1,0 +1,17 @@
+<header>
+  <div class="navbar navbar-fixed-top">
+    <a class="navbar-brand" href="/"><%= blog.name %></a>
+    <ul class="nav">
+      <li><a href="/new">New Post</a></li>
+    </ul>
+    <ul class="nav pull-right">
+      <li id="fat-menu" class="dropdown">
+        <a href="#" id="user-dropdown" role="button" class="dropdown-toggle" data-toggle="dropdown"><%= user.first_name %><b class="caret"></b></a>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="user-dropdown">
+          <li role="presentation"><a role="menuitem" tabindex="-1" href="/profile">My Account</a></li>
+          <li role="presentation"><a role="menuitem" tabindex="-1" href="/logout">Logout</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</header>

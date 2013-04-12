@@ -1,0 +1,26 @@
+{
+  "name": "imaginary",
+  "description": "dead simple wordpress inspired blog platform",
+  "version": "0.0.1",
+  "author": {
+    "name": "Christopher J Roth",
+    "email": "chris@cjroth.com"
+  },
+  "dependencies": {
+    "sequelize": "1.6.0",
+    "mysql": "2.0.0-alpha7",
+    "underscore": "1.4.4",
+    "passport": "0.1.16",
+    "bcrypt": "0.7.5",
+    "sql": "0.8.2",
+    "marked": "0.2.8"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cjroth/imaginary.git"
+  },
+  "main": "index",
+  "engines": {
+    "node": "*"
+  }
+}

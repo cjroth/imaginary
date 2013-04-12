@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>New Post - <%= blog.name %></title>
+    <%- include head %>
+    <link href='http://fonts.googleapis.com/css?family=Habibi|Gilda+Display|Poiret+One|Podkova|Gudea|Calligraffitti|Tangerine|Italianno|Julius+Sans+One|Playfair+Display+SC|Cinzel+Decorative|Cinzel|Asul|Amatic+SC|Trykker' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Princess+Sofia|Allura|Great+Vibes|Metamorphous|Maven+Pro|Rochester' rel='stylesheet' type='text/css'>
+    <style type="text/css">
+      body {
+        margin: 100px auto;
+        width: 960px;
+        position: relative;
+      }
+      h1.title {
+        font-family: 'Julius Sans One', sans-serif;
+        font-size: 50px;
+        line-height: 90px;
+        margin: 0;
+        letter-spacing: -8px;
+        font-weight: bold;
+        text-align: center;
+        margin-bottom: 50px;
+      }
+      .post {
+        width: 500px;
+        font-size: 16px;
+        line-height: 34px;
+        margin: 20px auto;
+        text-align: left;
+      }
+      .post span {
+        padding: 5px;
+        background: yellow;
+      }
+      .signature {
+        font-family: 'Allura', cursive;
+        font-size: 30px;
+        margin: 40px 0;
+      }
+      .twitter-share-button {
+        float: right;
+      }
+      .post p {
+        margin: 0 0 25px;
+      }
+      .content {
+        min-height: 400px;
+      }
+      .toolbox {
+        width: 200px;
+      }
+      label {
+        font-weight: normal;
+      }
+      .buttons {
+        width: 100%;
+      }
+      .buttons button {
+        width: 50%;
+      }
+      textarea.content {
+        border: none;
+        width: 500px;
+        font-size: 16px;
+        line-height: 20px;
+        text-align: left;
+        padding: 15px;
+      }
+    </style>
+  </head>
+  <body>
+
+    <% if (user) { %>
+      <% include header %>
+    <% } %>
+
+    <div class="toolbox panel" data-spy="affix">
+      <div class="panel-heading">Toolbox</div>
+      <label class="checkbox">
+        <input type="checkbox" value="signature"> Include signature
+      </label>
+      <label class="checkbox">
+        <input type="checkbox" value="tweet-button"> Include tweet button
+      </label>
+
+      <div class="btn-group buttons">
+        <button id="save" type="button" class="btn btn-primary">Save</button>
+        <button id="publish" type="button" class="btn btn-primary">Publish</button>
+      </div>
+
+    </div>
+
+    <h1 id="title" class="title" contenteditable="true">enter a title...</h1>
+
+    <div id="post" class="post" data-id="">
+
+      <ul class="nav nav-tabs nav-justified">
+        <li class="active"><a href="#edit" data-toggle="tab">Edit</a></li>
+        <li><a id="view-tab" href="#view" data-toggle="tab">View</a></li>
+      </ul>
+
+      <div class="tab-content">
+        <div id="edit" class="tab-pane active">
+          <textarea id="content" class="content" placeholder="start typing..."></textarea>
+        </div>
+        <div id="view" class="tab-pane">
+          <div class="content"></div>
+        </div>
+      </div>
+
+    </div>
+
+    <script src="/static/javascripts/marked.js"></script>
+    <script src="/static/javascripts/new.js"></script>
+
+  </body>
+</html>
