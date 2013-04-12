@@ -13,7 +13,11 @@
     return {
       id: $post.data('id') || undefined,
       title: $title.text(),
-      content: $content.val()
+      content: $content.val(),
+      config: {
+        include_tweet_button: $('#include-tweet-button').is(':checked'),
+        include_signature: $('#include-signature').is(':checked')
+      }
     };
   };
 
@@ -30,6 +34,16 @@
         return;
       }
       $post.data('id', data.post.id);
+    });
+  });
+
+  $publish.click(function() {
+    $.post('/save', serialize_post(), function(data) {
+      if (!data.result) {
+        // @todo handle error...
+        return;
+      }
+      window.location = '/' + data.post.slug;
     });
   });
 

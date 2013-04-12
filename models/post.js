@@ -6,11 +6,13 @@ module.exports = function(Sequelize, DataTypes) {
     slug: { type: DataTypes.TEXT },
     author: { type: DataTypes.TEXT },
     content: { type: DataTypes.TEXT },
+    config: { type: DataTypes.TEXT }
   }, {
     underscored: true,
     paranoid: true,
     instanceMethods: {
-      getHTML: function() { return Sequelize.exports.marked(this.content); }
+      getHTML: function() { return Sequelize.exports.marked(this.content); },
+      getConfig: function() { return JSON.parse(this.config); }
     }
   });
 

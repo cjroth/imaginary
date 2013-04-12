@@ -43,12 +43,23 @@
       .essay p {
         margin: 0 0 25px;
       }
+      .content {
+        margin: 0 0 100px 0;
+      }
     </style>
   </head>
   <body>
 
     <% if (user) { %>
       <% include header %>
+    <% } %>
+
+    <% for (var i in posts) { %>
+      <% var post = posts[i]; %>
+      <h2><a href="/<%= post.slug %>"><%= post.title %></a></h2>
+      <div class="content">
+        <%- post.getHTML() %>
+      </div>
     <% } %>
 
   </body>
