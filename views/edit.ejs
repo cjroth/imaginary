@@ -11,15 +11,16 @@
         width: 960px;
         position: relative;
       }
-      h1.title {
+      #title {
         font-family: 'Julius Sans One', sans-serif;
-        font-size: 50px;
-        line-height: 90px;
-        margin: 0;
-        letter-spacing: -8px;
+        font-size: 30px;
+        line-height: 30px;
+        margin: 0 auto 30px;
         font-weight: bold;
         text-align: center;
-        margin-bottom: 50px;
+        width: 500px;
+        display: block;
+        letter-spacing: -4px;
       }
       .post {
         width: 500px;
@@ -59,7 +60,7 @@
         width: 50%;
       }
       textarea.content {
-        border: none;
+        border: 1px solid #eee;
         width: 500px;
         font-size: 16px;
         line-height: 20px;
@@ -90,9 +91,9 @@
 
     </div>
 
-    <h1 id="title" class="title" contenteditable="true">enter a title...</h1>
+    <input id="title" type="text" class="title" placeholder="enter a title"><%- post.title %></input>
 
-    <div id="post" class="post" data-id="">
+    <div id="post" class="post" data-id="<%- post.id %>">
 
       <ul class="nav nav-tabs nav-justified">
         <li class="active"><a href="#edit" data-toggle="tab">Edit</a></li>
@@ -101,7 +102,7 @@
 
       <div class="tab-content">
         <div id="edit" class="tab-pane active">
-          <textarea id="content" class="content" placeholder="start typing..."></textarea>
+          <textarea id="content" class="content" placeholder="start typing..."><%- post.content %></textarea>
         </div>
         <div id="view" class="tab-pane">
           <div class="content"></div>

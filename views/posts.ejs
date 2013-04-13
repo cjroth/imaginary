@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= blog.name %></title>
+    <%- include head %>
+    <link href='http://fonts.googleapis.com/css?family=Habibi|Gilda+Display|Poiret+One|Podkova|Gudea|Calligraffitti|Tangerine|Italianno|Julius+Sans+One|Playfair+Display+SC|Cinzel+Decorative|Cinzel|Asul|Amatic+SC|Trykker' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Princess+Sofia|Allura|Great+Vibes|Metamorphous|Maven+Pro|Rochester' rel='stylesheet' type='text/css'>
+    <style type="text/css">
+      body {
+        margin: 100px auto;
+        width: 960px;
+        position: relative;
+      }
+      h1.title {
+        font-family: 'Julius Sans One', sans-serif;
+        font-size: 50px;
+        line-height: 90px;
+        margin: 0;
+        letter-spacing: -8px;
+        font-weight: bold;
+        text-align: center;
+        margin-bottom: 50px;
+      }
+      .essay {
+        width: 500px;
+        font-size: 16px;
+        line-height: 34px;
+        margin: 20px auto;
+        text-align: left;
+      }
+      .essay span {
+        padding: 5px;
+        background: yellow;
+      }
+      .signature {
+        font-family: 'Allura', cursive;
+        font-size: 30px;
+        margin: 40px 0;
+      }
+      .twitter-share-button {
+        float: right;
+      }
+      .essay p {
+        margin: 0 0 25px;
+      }
+      .content {
+        margin: 0 0 100px 0;
+      }
+      .post-options-toggle {
+        margin-left: 20px;
+      }
+      .post-options-toggle {
+        border-radius: 15px;
+        background: #000 !important;
+        border: none !important;
+      }
+    </style>
+  </head>
+  <body>
+
+    <% if (user) { %>
+      <% include header %>
+    <% } %>
+
+    <table class="table">
+      <% for (var i in posts) { %>
+        <% var post = posts[i]; %>
+        <tr>
+          <td><a href="/<%= post.slug %>"><%= post.title %></a></td>
+          <td><%= post.published_at || 'Draft' %></td>
+          <td class="text-right">
+            <div class="btn-group">
+              <a href="/edit/<%= post.id %>" class="btn btn-mini">Edit</a>
+              <a href="/publish/<%= post.id %>" class="btn btn-mini">Publish</a>
+              <a href="#delete-post-modal" class="btn btn-mini" data-delete-id="<%= post.id %>" data-delete-title="<%= post.title %>">Delete</a>
+            </div>
+          </td>
+        </tr>
+      <% } %>
+    </table>
+
+  </body>
+</html>

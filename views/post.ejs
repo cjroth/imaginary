@@ -64,7 +64,7 @@
         <h1 class="title"><%= post.title %><button class="post-options-toggle btn btn-mini dropdown-toggle" type="button" data-toggle="dropdown"><span class="caret"></span></button></h1>
         <ul class="post-options dropdown-menu">
           <li><a href="/edit/<%= post.id %>">Edit</a></li>
-          <li><a href="#delete-post-modal" data-toggle="modal">Delete</a></li>
+          <li><a href="#delete-post-modal" data-delete-id="<%= post.id %>" data-delete-title="<%= post.title %>">Delete</a></li>
           <li><a href="/publish<%= post.id %>">Publish</a></li>
         </ul>
       </div>
@@ -77,6 +77,7 @@
       <%- post.getHTML() %>
 
       <p class="signature">
+        <% console.log(post.getConfig()) %>
         <% if (post.getConfig().include_signature) { %>
           Chris Roth - April 2, 2013
         <% } %>
@@ -88,24 +89,6 @@
 
     </div>
 
-    <div id="delete-post-modal" class="modal" data-backdrop="false">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <h4 class="modal-title">Delete "<%= post.title %>"</h4>
-          </div>
-          <div class="modal-body">
-            Are you sure you want to delete this post?
-          </div>
-          <div class="modal-footer">
-            <a id="delete-post" href="#" class="btn btn-danger">Yes, Delete</a>
-            <a href="#" class="btn" data-dismiss="modal">No, Cancel</a>
-          </div>
-        </div>
-      </div>
-    </div>
-
     <script>
     $('.post-options-toggle').click(function() {
       $('.post-options').toggle().position({
@@ -114,14 +97,6 @@
         of: $('.post-options-toggle')
       }).click(function() {
         $(this).hide();
-      });
-    });
-    $('#delete-post').click(function() {
-      $.post('/delete/<%= post.id %>', function(data) {
-        if (!data.result) {
-          // @todo handle error
-        }
-        window.location = '/';
       });
     });
     </script>
