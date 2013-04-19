@@ -17,6 +17,7 @@ $(document).ready(function() {
       $this.hide();
     });
   });
+  
   $('#delete-post').click(function() {
     var $modal = $('#delete-post-modal');
     var post_id = $(this).parents('.modal').data('delete-post');
@@ -26,6 +27,18 @@ $(document).ready(function() {
       }
       window.location.reload();
     });
+  });
+
+  var $forms = $('.form');
+  $forms.submit(function() {
+    var url = $(this).attr('action');
+    var data = $(this).serialize();
+    $.post(url, data, function(data) {
+      if (data.result) {
+        window.location = '/';
+      }
+    });
+    return false;
   });
 
 });

@@ -5,55 +5,8 @@
     <%- include head %>
     <link href='http://fonts.googleapis.com/css?family=Habibi|Gilda+Display|Poiret+One|Podkova|Gudea|Calligraffitti|Tangerine|Italianno|Julius+Sans+One|Playfair+Display+SC|Cinzel+Decorative|Cinzel|Asul|Amatic+SC|Trykker' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Princess+Sofia|Allura|Great+Vibes|Metamorphous|Maven+Pro|Rochester' rel='stylesheet' type='text/css'>
-    <style type="text/css">
-      body {
-        margin: 100px auto;
-        width: 960px;
-        position: relative;
-      }
-      h1.title {
-        font-family: 'Julius Sans One', sans-serif;
-        font-size: 50px;
-        line-height: 90px;
-        margin: 0;
-        letter-spacing: -8px;
-        font-weight: bold;
-        text-align: center;
-        margin-bottom: 50px;
-      }
-      .essay {
-        width: 500px;
-        font-size: 16px;
-        line-height: 34px;
-        margin: 20px auto;
-        text-align: left;
-      }
-      .essay span {
-        padding: 5px;
-        background: yellow;
-      }
-      .signature {
-        font-family: 'Allura', cursive;
-        font-size: 30px;
-        margin: 40px 0;
-      }
-      .twitter-share-button {
-        float: right;
-      }
-      .essay p {
-        margin: 0 0 25px;
-      }
-      .post-options-toggle {
-        margin-left: 20px;
-      }
-      .post-options-toggle {
-        border-radius: 15px;
-        background: #000 !important;
-        border: none !important;
-      }
-    </style>
   </head>
-  <body>
+  <body class="post">
 
     <% if (user) { %>
       <% include header %>
@@ -61,7 +14,7 @@
 
     <% if (user) { %>
       <div>
-        <h1 class="title"><%= post.title %><button class="post-options-toggle btn btn-mini dropdown-toggle" type="button" data-toggle="dropdown"><span class="caret"></span></button></h1>
+        <h1 class="post-title"><%= post.title %><button class="post-options-toggle btn btn-mini dropdown-toggle" type="button" data-toggle="dropdown"><span class="caret"></span></button></h1>
         <ul class="post-options dropdown-menu">
           <li><a href="/edit/<%= post.id %>">Edit</a></li>
           <li><a href="#delete-post-modal" data-delete-id="<%= post.id %>" data-delete-title="<%= post.title %>">Delete</a></li>
@@ -69,10 +22,10 @@
         </ul>
       </div>
     <% } else { %>
-      <h1 class="title"><%= post.title %></h1>
+      <h1 class="post-title"><%= post.title %></h1>
     <% } %>
 
-    <div class="essay">
+    <div class="post-content">
 
       <%- post.getHTML() %>
 
@@ -89,17 +42,7 @@
 
     </div>
 
-    <script>
-    $('.post-options-toggle').click(function() {
-      $('.post-options').toggle().position({
-        my: 'right top',
-        at: 'right bottom',
-        of: $('.post-options-toggle')
-      }).click(function() {
-        $(this).hide();
-      });
-    });
-    </script>
+    <script src="/static/javascripts/post.js"></script>
 
   </body>
 </html>

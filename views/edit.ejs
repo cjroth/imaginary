@@ -5,71 +5,8 @@
     <%- include head %>
     <link href='http://fonts.googleapis.com/css?family=Habibi|Gilda+Display|Poiret+One|Podkova|Gudea|Calligraffitti|Tangerine|Italianno|Julius+Sans+One|Playfair+Display+SC|Cinzel+Decorative|Cinzel|Asul|Amatic+SC|Trykker' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Princess+Sofia|Allura|Great+Vibes|Metamorphous|Maven+Pro|Rochester' rel='stylesheet' type='text/css'>
-    <style type="text/css">
-      body {
-        margin: 100px auto;
-        width: 960px;
-        position: relative;
-      }
-      #title {
-        font-family: 'Julius Sans One', sans-serif;
-        font-size: 30px;
-        line-height: 30px;
-        margin: 0 auto 30px;
-        font-weight: bold;
-        text-align: center;
-        width: 500px;
-        display: block;
-        letter-spacing: -4px;
-      }
-      .post {
-        width: 500px;
-        font-size: 16px;
-        line-height: 34px;
-        margin: 20px auto;
-        text-align: left;
-      }
-      .post span {
-        padding: 5px;
-        background: yellow;
-      }
-      .signature {
-        font-family: 'Allura', cursive;
-        font-size: 30px;
-        margin: 40px 0;
-      }
-      .twitter-share-button {
-        float: right;
-      }
-      .post p {
-        margin: 0 0 25px;
-      }
-      .content {
-        min-height: 400px;
-      }
-      .toolbox {
-        width: 200px;
-      }
-      label {
-        font-weight: normal;
-      }
-      .buttons {
-        width: 100%;
-      }
-      .buttons button {
-        width: 50%;
-      }
-      textarea.content {
-        border: 1px solid #eee;
-        width: 500px;
-        font-size: 16px;
-        line-height: 20px;
-        text-align: left;
-        padding: 15px;
-      }
-    </style>
   </head>
-  <body>
+  <body class="edit">
 
     <% if (user) { %>
       <% include header %>
@@ -78,10 +15,10 @@
     <div class="toolbox panel" data-spy="affix">
       <div class="panel-heading">Toolbox</div>
       <label class="checkbox">
-        <input id="include-signature" type="checkbox" value="signature"> Include signature
+        <input id="include-signature" type="checkbox" value="signature"<%= (post.getConfig && post.getConfig().include_signature === false ? '' : ' checked') %>> Include signature
       </label>
       <label class="checkbox">
-        <input id="include-tweet-button" type="checkbox" value="tweet-button"> Include tweet button
+        <input id="include-tweet-button" type="checkbox" value="tweet-button"<%= (post.getConfig && post.getConfig().include_tweet_button === false ? '' : ' checked') %>> Include tweet button
       </label>
 
       <div class="btn-group buttons">
@@ -91,9 +28,9 @@
 
     </div>
 
-    <input id="title" type="text" class="title" placeholder="enter a title"><%- post.title %></input>
+    <input id="post-title" type="text" class="post-title" placeholder="enter a title" value="<%- post.title %>"></input>
 
-    <div id="post" class="post" data-id="<%- post.id %>">
+    <div id="post" class="edit-post" data-id="<%- post.id %>">
 
       <ul class="nav nav-tabs nav-justified">
         <li class="active"><a href="#edit" data-toggle="tab">Edit</a></li>
@@ -102,10 +39,10 @@
 
       <div class="tab-content">
         <div id="edit" class="tab-pane active">
-          <textarea id="content" class="content" placeholder="start typing..."><%- post.content %></textarea>
+          <textarea id="post-content" class="post-content" placeholder="start typing..."><%- post.content %></textarea>
         </div>
         <div id="view" class="tab-pane">
-          <div class="content"></div>
+          <div class="post-content"></div>
         </div>
       </div>
 

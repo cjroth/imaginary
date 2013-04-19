@@ -12,7 +12,7 @@
   var serialize_post = function() {
     return {
       id: $post.data('id') || undefined,
-      title: $title.text(),
+      title: $title.val(),
       content: $content.val(),
       config: {
         include_tweet_button: $('#include-tweet-button').is(':checked'),
