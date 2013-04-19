@@ -17,7 +17,18 @@
       <h1 class="post-title"><%= post.title %></h1>
 
       <div class="post-content"><%- post.getHTML() %></div>
-      <textarea class="edit-content"><%- post.content %></textarea>
+
+      <div class="edit-container">
+        <textarea class="edit-content"><%- post.content %></textarea>
+        <div class="post-options panel">
+          <div class="panel-heading">Post Options</div>
+
+          asdgasd
+        </div>
+      </div>
+
+      <div class="post-options-handle"></div>
+
 
       <p class="post-signature">
         <% console.log(post.getConfig()) %>
