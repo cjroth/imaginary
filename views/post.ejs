@@ -6,30 +6,20 @@
     <link href='http://fonts.googleapis.com/css?family=Habibi|Gilda+Display|Poiret+One|Podkova|Gudea|Calligraffitti|Tangerine|Italianno|Julius+Sans+One|Playfair+Display+SC|Cinzel+Decorative|Cinzel|Asul|Amatic+SC|Trykker' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Princess+Sofia|Allura|Great+Vibes|Metamorphous|Maven+Pro|Rochester' rel='stylesheet' type='text/css'>
   </head>
-  <body class="post">
+  <body id="post">
 
     <% if (user) { %>
       <% include header %>
     <% } %>
 
-    <% if (user) { %>
-      <div>
-        <h1 class="post-title"><%= post.title %><button class="post-options-toggle btn btn-mini dropdown-toggle" type="button" data-toggle="dropdown"><span class="caret"></span></button></h1>
-        <ul class="post-options dropdown-menu">
-          <li><a href="/edit/<%= post.id %>">Edit</a></li>
-          <li><a href="#delete-post-modal" data-delete-id="<%= post.id %>" data-delete-title="<%= post.title %>">Delete</a></li>
-          <li><a href="/publish<%= post.id %>">Publish</a></li>
-        </ul>
-      </div>
-    <% } else { %>
+    <div class="post">
+
       <h1 class="post-title"><%= post.title %></h1>
-    <% } %>
 
-    <div class="post-content">
+      <div class="post-content"><%- post.getHTML() %></div>
+      <textarea class="edit-content"><%- post.content %></textarea>
 
-      <%- post.getHTML() %>
-
-      <p class="signature">
+      <p class="post-signature">
         <% console.log(post.getConfig()) %>
         <% if (post.getConfig().include_signature) { %>
           Chris Roth - April 2, 2013
@@ -42,6 +32,7 @@
 
     </div>
 
+    <script src="/static/javascripts/marked.js"></script>
     <script src="/static/javascripts/post.js"></script>
 
   </body>

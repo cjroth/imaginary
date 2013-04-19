@@ -30,23 +30,7 @@
 
     <input id="post-title" type="text" class="post-title" placeholder="enter a title" value="<%- post.title %>"></input>
 
-    <div id="post" class="edit-post" data-id="<%- post.id %>">
-
-      <ul class="nav nav-tabs nav-justified">
-        <li class="active"><a href="#edit" data-toggle="tab">Edit</a></li>
-        <li><a id="view-tab" href="#view" data-toggle="tab">View</a></li>
-      </ul>
-
-      <div class="tab-content">
-        <div id="edit" class="tab-pane active">
-          <textarea id="post-content" class="post-content" placeholder="start typing..."><%- post.content %></textarea>
-        </div>
-        <div id="view" class="tab-pane">
-          <div class="post-content"></div>
-        </div>
-      </div>
-
-    </div>
+    <textarea id="post-content" class="post-content" placeholder="start typing..."><%- post.content %></textarea>
 
     <script src="/static/javascripts/marked.js"></script>
     <script src="/static/javascripts/new.js"></script>
