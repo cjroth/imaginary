@@ -11,7 +11,7 @@
 
   var serialize_post = function() {
     return {
-      id: $post.data('id') || undefined,
+      id: $post.data('post-id') || undefined,
       title: $title.val(),
       content: $content.val(),
       config: {
