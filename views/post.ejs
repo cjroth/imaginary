@@ -1,10 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= post.title %> - <%= blog.name %></title>
+    <title><%= post.title || 'New Post' %> - <%= blog.name %></title>
     <%- include head %>
-    <link href='http://fonts.googleapis.com/css?family=Habibi|Gilda+Display|Poiret+One|Podkova|Gudea|Calligraffitti|Tangerine|Italianno|Julius+Sans+One|Playfair+Display+SC|Cinzel+Decorative|Cinzel|Asul|Amatic+SC|Trykker' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Princess+Sofia|Allura|Great+Vibes|Metamorphous|Maven+Pro|Rochester' rel='stylesheet' type='text/css'>
   </head>
   <body id="post">
 
@@ -12,25 +10,25 @@
       <% include header %>
     <% } %>
 
-    <div class="post" data-post-id="<%= post.id %>">
+    <div class="post" data-post-id="<%= post.id || '' %>">
 
-      <h1 class="post-title"><%= post.title %></h1>
+      <h1 class="post-title"><%= post.title || '' %></h1>
 
-      <div class="post-content"><%- post.getHTML() %></div>
+      <div class="post-content"><%- post.getHTML && post.getHTML() %></div>
 
       <div class="edit-container">
-        <textarea class="edit-content" name="post-content"><%- post.content %></textarea>
+        <textarea class="edit-content" name="post-content" placeholder="Once upon a time..."><%- post.content %></textarea>
         <div class="post-options panel">
           <div class="panel-heading">Manage Post</div>
           Some text
           <ul class="list-group list-group-flush">
 
             <li class="list-group-item btn-group">
-              <input type="text" placeholder="Enter a title..." value="<%= post.title %>" name="post-title"></input>
+              <input type="text" placeholder="Enter a title..." value="<%= post.title || '' %>" name="post-title"></input>
             </li>
 
             <li class="list-group-item btn-group">
-              <input type="text" placeholder="/url/of/post" value="<%= post.slug %>" name="post-slug"></input>
+              <input type="text" placeholder="/url/of/post" value="<%= post.slug || '' %>" name="post-slug"></input>
             </li>
 
             <li class="list-group-item">
@@ -52,9 +50,8 @@
       </div>
 
       <p class="post-footer clearfix">
-        <% console.log(post.getConfig()) %>
-        <span class="post-signature<%= (post.getConfig().include_signature) ? '' : ' hidden' %>">Chris Roth - April 2, 2013</span>
-        <a href="https://twitter.com/share" class="twitter-share-button<%= (post.getConfig().include_tweet_button) ? '' : ' hidden' %>" data-via="chrisrxth" data-size="large">Tweet</a>
+        <span class="post-signature<%= (post.getConfig && post.getConfig().include_signature) ? '' : ' hidden' %>">Chris Roth - April 2, 2013</span>
+        <a href="https://twitter.com/share" class="twitter-share-button<%= (post.getConfig && post.getConfig().include_tweet_button) ? '' : ' hidden' %>" data-via="chrisrxth" data-size="large">Tweet</a>
         <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
       </p>
 

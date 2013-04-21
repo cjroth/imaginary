@@ -14,9 +14,22 @@ body {
   width: 100%;
 }
 
-/* edit */
+/* posts */
+body.posts .post-title, body.posts .post-status {
+  font-family: 'Habibi', serif;
+}
+
+body.posts tr {
+  font-size: 18pt;
+}
+
+body.posts tr td {
+  vertical-align: middle;
+  padding: 20px;
+}
+
+/* post */
 body.edit .post-title {
-  font-family: 'Julius Sans One', sans-serif;
   font-size: 30px;
   line-height: 30px;
   margin: 0 auto 30px;
@@ -62,7 +75,7 @@ textarea.content {
 }
 
 /* post */
-.post-title {
+.post .post-title {
   font-size: 50px;
   line-height: 90px;
   margin: 0;
@@ -74,7 +87,7 @@ textarea.content {
   font-family: 'Habibi', serif;
 
 }
-.post-content {
+.post .post-content {
   font-family: 'Habibi', serif;
   width: 600px;
   font-size: 16px;
@@ -105,10 +118,10 @@ textarea.content {
   position: relative;
   float: left;
 }
-.post-content p {
+.post .post-content p {
   margin: 0 0 25px;
 }
-.post-footer {
+.post .post-footer {
   width: 600px;
   padding: 0 30px;
   font-family: 'Allura', cursive;
@@ -177,17 +190,14 @@ textarea.content {
 body.login {
   padding-top: 40px;
   padding-bottom: 40px;
-  background-color: #eee;
 }
-.signup-login-tab-container .nav.nav-tabs {
+.form-login {
+  width: 250px;
   margin: 0 auto;
-  border-bottom: 0;
-  display: table;
 }
-.form-container {
-  max-width: 300px;
-  padding: 30px;
-  margin: 0 auto;
+.form-login h1 {
+  font-family: 'Habibi', serif;
+  font-weight: bold;
 }
 .form-login .form-login-heading,
 .form-login .checkbox {

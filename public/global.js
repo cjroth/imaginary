@@ -41,4 +41,15 @@ $(document).ready(function() {
     return false;
   });
   
+  $('[href="#new"]').click(function() {
+    $.post('/new', function(data) {
+      if (!data.result) {
+        // @todo handle error...
+        return;
+      }
+      window.location = data.post.slug;
+    });
+    return false;
+  });
+
 });

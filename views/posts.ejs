@@ -3,11 +3,8 @@
   <head>
     <title><%= blog.name %></title>
     <%- include head %>
-    <link href='http://fonts.googleapis.com/css?family=Habibi|Gilda+Display|Poiret+One|Podkova|Gudea|Calligraffitti|Tangerine|Italianno|Julius+Sans+One|Playfair+Display+SC|Cinzel+Decorative|Cinzel|Asul|Amatic+SC|Trykker' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Princess+Sofia|Allura|Great+Vibes|Metamorphous|Maven+Pro|Rochester' rel='stylesheet' type='text/css'>
-    <link href='/static/stylesheets/global.css' rel='stylesheet' type='text/css'>
   </head>
-  <body>
+  <body class="posts">
 
     <% if (user) { %>
       <% include header %>
@@ -17,15 +14,8 @@
       <% for (var i in posts) { %>
         <% var post = posts[i]; %>
         <tr>
-          <td><a href="/<%= post.slug %>"><%= post.title %></a></td>
-          <td><%= post.published_at || 'Draft' %></td>
-          <td class="text-right">
-            <div class="btn-group">
-              <a href="/edit/<%= post.id %>" class="btn btn-mini">Edit</a>
-              <a href="/publish/<%= post.id %>" class="btn btn-mini">Publish</a>
-              <a href="#delete-post-modal" class="btn btn-mini" data-delete-id="<%= post.id %>" data-delete-title="<%= post.title %>">Delete</a>
-            </div>
-          </td>
+          <td><a class="post-title" href="<%= post.slug %>"><%= post.title %></a></td>
+          <td><span class="post-status"><%= post.published_at || 'Draft' %></a></td>
         </tr>
       <% } %>
     </table>
