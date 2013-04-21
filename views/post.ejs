@@ -51,15 +51,11 @@
         <div class="post-options-handle"></div>
       </div>
 
-      <p class="post-signature">
+      <p class="post-footer clearfix">
         <% console.log(post.getConfig()) %>
-        <% if (post.getConfig().include_signature) { %>
-          Chris Roth - April 2, 2013
-        <% } %>
-        <% if (post.getConfig().include_tweet_button) { %>
-          <a href="https://twitter.com/share" class="twitter-share-button" data-via="chrisrxth" data-size="large">Tweet</a>
-          <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-        <% } %>
+        <span class="post-signature<%= (post.getConfig().include_signature) ? '' : ' hidden' %>">Chris Roth - April 2, 2013</span>
+        <a href="https://twitter.com/share" class="twitter-share-button<%= (post.getConfig().include_tweet_button) ? '' : ' hidden' %>" data-via="chrisrxth" data-size="large">Tweet</a>
+        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
       </p>
 
     </div><!-- .post -->

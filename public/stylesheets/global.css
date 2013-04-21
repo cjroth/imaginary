@@ -108,18 +108,24 @@ textarea.content {
 .post-content p {
   margin: 0 0 25px;
 }
-.post-signature {
+.post-footer {
   width: 600px;
   padding: 0 30px;
   font-family: 'Allura', cursive;
   font-size: 30px;
   margin: 40px auto;
 }
-.post.edit .post-signature {
+.post.edit .post-footer {
   display: none;
 }
 .twitter-share-button {
   float: right;
+}
+.twitter-share-button.hidden {
+  display: none;
+}
+.post-signature.hidden {
+  display: none;
 }
 .post-options-toggle {
   margin-left: 20px;
