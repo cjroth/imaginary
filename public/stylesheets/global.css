@@ -25,6 +25,7 @@ body.edit .post-title {
   width: 500px;
   display: block;
   letter-spacing: -4px;
+  font-family: 'Habibi', serif;
 }
 .edit-post {
   width: 500px;
@@ -34,6 +35,7 @@ body.edit .post-title {
   text-align: left;
 }
 body.edit .post-content {
+  font-family: 'Habibi', serif;
   min-height: 400px;
   margin: 0;
   border: 0;
@@ -61,17 +63,19 @@ textarea.content {
 
 /* post */
 .post-title {
-  font-family: 'Julius Sans One', sans-serif;
   font-size: 50px;
   line-height: 90px;
   margin: 0;
   padding: 50px 0 0 0;
-  letter-spacing: -8px;
+  letter-spacing: -2px;
   font-weight: bold;
   text-align: center;
   margin-bottom: 50px;
+  font-family: 'Habibi', serif;
+
 }
 .post-content {
+  font-family: 'Habibi', serif;
   width: 600px;
   font-size: 16px;
   line-height: 34px;
@@ -88,8 +92,10 @@ textarea.content {
   width: 800px;
 }
 .edit-content {
+  font-family: 'Habibi', serif;
   width: 600px;
   font-size: 16px;
+  line-height: 28px;
   text-align: left;
   height: 600px;
   padding: 30px;
@@ -135,6 +141,9 @@ textarea.content {
   border-bottom-left-radius: 5px;
   cursor: w-resize;
 }
+.post-options-handle:hover {
+  background: #ccc;
+}
 .edit-container.options .post-options-handle {
   cursor: e-resize;
 }
@@ -145,6 +154,12 @@ textarea.content {
   float: right;
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
+}
+.post-options .list-group-item.extended {
+  width: 350px;
+  background: #fff;
+  border-right: 1px solid #ddd;
+  border-radius: 5px;
 }
 .post-options .buttons {
   padding: 10px;

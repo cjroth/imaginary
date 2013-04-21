@@ -29,6 +29,10 @@
               <input type="text" placeholder="Enter a title..." value="<%= post.title %>" name="post-title"></input>
             </li>
 
+            <li class="list-group-item btn-group">
+              <input type="text" placeholder="/url/of/post" value="<%= post.slug %>" name="post-slug"></input>
+            </li>
+
             <li class="list-group-item">
               <label class="checkbox">
                 <input name="include-signature" type="checkbox" value="signature"<%= (post.getConfig && post.getConfig().include_signature === false ? '' : ' checked') %>> Include signature

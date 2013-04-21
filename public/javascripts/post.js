@@ -59,6 +59,7 @@
     return {
       id: $('.post').data('post-id') || undefined,
       title: $('[name="post-title"]').val(),
+      slug: $('[name="post-slug"]').val(),
       content: $('[name="post-content"]').val(),
       config: {
         include_tweet_button: $('[name="include-tweet-button"]').is(':checked'),
@@ -70,16 +71,53 @@
   var save_post = function() {
     $.post('/save', serialize_post(), function(data) {
       if (!data.result) {
-        // @todo handle error...
+        // @todo handle error
         return;
+      }
+      if (data.post.slug != window.location.pathname) {
+        window.location = data.post.slug;
       }
       $('.post').data('post-id', data.post.id);
     });
   };
 
-  $('[name]').on('keyup change', function() {
+  var title_to_slug = function(title) {
+    var slug = '';
+    slug = title.replace(/ /g, '-');
+    slug = slug.replace(/[^a-zA-Z0-9-]/g, '');
+    slug = slug.toLowerCase();
+    return '/' + slug;
+  };
+
+  $('[name="post-content"], [name="post-title"], [name="include-tweet-button"], [name="include-signature"]').on('keyup change', function() {
     save_post();
     // @todo show saving notification
+  });
+
+  $('[name="post-slug"]').on('keyup change', function(e) {
+    var slug = $('[name="post-slug"]').val();
+    if (slug == '' || slug == '/') {
+      return;
+    }
+    save_post();
+  });
+
+  $('[name="post-title"], [name="post-slug"]')
+    .focus(function() {
+      $(this).parents('.list-group-item').addClass('extended');
+    })
+    .blur(function() {
+      $(this).parents('.list-group-item').removeClass('extended');
+    });
+
+  $('[name="post-title"]').keyup(function() {
+    var post_id = $('.post').data('post-id');
+    if (post_id) {
+      return;
+    }
+    var title = $(this).val();
+    var slug = title_to_slug(title);
+    $('[name="post-slug"]').val(slug);
   });
 
 })();

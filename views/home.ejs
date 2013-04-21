@@ -14,7 +14,7 @@
 
     <% for (var i in posts) { %>
       <% var post = posts[i]; %>
-      <h2><a href="/<%= post.slug %>"><%= post.title %></a></h2>
+      <h2><a href="<%= post.slug %>"><%= post.title %></a></h2>
       <div class="content">
         <%- post.getHTML() %>
       </div>
