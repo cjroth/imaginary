@@ -1,10 +1,25 @@
 $(document).ready(function() {
   
-  $('[data-delete-id]').click(function() {
+  $('[href="#delete"]').click(function() {
+    var $post = $(this).parents('.post');
+    var post_id = $post.data('post-id');
+    var post_title = $post.find('.post-title').text();
     var $modal = $('#delete-post-modal');
-    $modal.find('.modal-title').text('Delete "' + $(this).data('delete-title') + '"');
-    $modal.data('delete-post', $(this).data('delete-id'));
+    $modal.find('.modal-title').text('Delete ' + (post_title ? ('"' +  post_title + '"') : 'Untitled (#' + post_id + ')') + '?');
+    $modal.data('delete-post', post_id);
     $modal.modal('toggle');
+    return false;
+  });
+
+  $('[href="#publish"]').click(function() {
+    var $post = $(this).parents('.post');
+    var post_id = $post.data('post-id');
+    var post_title = $post.find('.post-title').text();
+    var $modal = $('#publish-post-modal');
+    $modal.find('.modal-title').text('Publish ' + (post_title ? ('"' +  post_title + '"') : 'Untitled (#' + post_id + ')') + '?');
+    $modal.data('publish-post', post_id);
+    $modal.modal('toggle');
+    return false;
   });
 
   $('.post-options-toggle').click(function() {
@@ -25,7 +40,7 @@ $(document).ready(function() {
       if (!data.result) {
         // @todo handle error
       }
-      window.location.reload();
+      window.location = '/posts';
     });
   });
 
@@ -47,7 +62,7 @@ $(document).ready(function() {
         // @todo handle error...
         return;
       }
-      window.location = data.post.slug;
+      window.location = data.post.slug + '#editing=true';
     });
     return false;
   });

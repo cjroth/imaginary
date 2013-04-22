@@ -17,6 +17,7 @@
       <div class="post-content"><%- post.getHTML && post.getHTML() %></div>
 
       <div class="edit-container">
+
         <textarea class="edit-content" name="post-content" placeholder="Once upon a time..."><%- post.content %></textarea>
         <div class="post-options panel">
           <div class="panel-heading">Manage Post</div>
@@ -40,8 +41,8 @@
               </label>
             </li>
             <li class="list-group-item btn-group buttons">
-                <button id="save" type="button" class="btn btn-danger">Delete</button>
-                <button id="publish" type="button" class="btn btn-primary">Publish</button>
+                <a href="#delete" type="button" class="btn btn-danger">Delete</a>
+                <a href="#publish" type="button" class="btn btn-primary">Publish</a>
             </li>
           </ul>
 
@@ -57,7 +58,8 @@
 
     </div><!-- .post -->
 
-    <script src="/static/javascripts/marked.js"></script>
+    <% include footer %>
+
     <script src="/static/javascripts/post.js"></script>
 
   </body>

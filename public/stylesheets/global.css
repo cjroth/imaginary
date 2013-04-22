@@ -28,6 +28,16 @@ body.posts tr td {
   padding: 20px;
 }
 
+.nav {
+  position: fixed;
+  top: 25px;
+  right: 25px;
+}
+
+.nav .glyphicon {
+  margin-right: 10px;
+}
+
 /* post */
 body.edit .post-title {
   font-size: 30px;
@@ -62,7 +72,7 @@ label {
 .buttons {
   width: 100%;
 }
-.buttons button {
+.buttons button, .buttons a {
   width: 50%;
 }
 textarea.content {
@@ -101,7 +111,7 @@ textarea.content {
   margin: 20px auto;
   width: 600px;
 }
-.edit-container.options {
+.post.options .edit-container {
   width: 800px;
 }
 .edit-content {
@@ -184,7 +194,7 @@ textarea.content {
   padding: 10px;
 }
 .post.edit .post-options-handle { display: block; }
-.post.edit .edit-container.options .post-options { display: block; }
+.post.edit.options .edit-container .post-options { display: block; }
 
 /* login */
 body.login {

@@ -14,7 +14,7 @@
       <% for (var i in posts) { %>
         <% var post = posts[i]; %>
         <tr>
-          <td><a class="post-title" href="<%= post.slug %>"><%= post.title %></a></td>
+          <td><a class="post-title" href="<%= post.slug %>"><%= post.title || 'Untitled (#' + post.id + ')' %></a></td>
           <td><span class="post-status"><%= post.published_at || 'Draft' %></a></td>
         </tr>
       <% } %>

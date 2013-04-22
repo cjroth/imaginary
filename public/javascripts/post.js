@@ -12,22 +12,23 @@
 
   $('.post-content').click(function(e) {
     e.stopPropagation();
-    $('.post').addClass('edit'); 
-    $('.post-title').slideUp(30);
+    $('.post').addClass('edit');
+    $('.post-title').hide();
     $('.post-options-handle').position({
       my: 'right center',
       at: 'right center',
       of: '.edit-content'
     });
-
+    $.bbq.pushState({ editing: true });
   });
 
   $(document).bind('click', function(e) {
-    //var markdown = $('.edit-content').val();
-    //var html = marked(markdown);
-    //$('.post-content').html(html);
+    if ($(e.target).parents('.modal-dialog').length) {
+      return;
+    }
     $('.post').removeClass('edit');
-    $('.post-title').slideDown(30);
+    $('.post-title').show();
+    $.bbq.removeState('editing');
   });
 
   $('.edit-content').bind('click', function(e) {
@@ -36,19 +37,22 @@
 
   $('.post-options-handle').click(function(e) {
     e.stopPropagation();
-    $('.edit-container').toggleClass('options');
+    $('.post').toggleClass('options');
     $(this).position({
       my: 'right center',
       at: 'right center',
       of: '.edit-content'
     });
-
     $('.post-options .buttons').position({
       my: 'bottom',
       at: 'bottom',
       of: '.post-options'
     });
-
+    if ($('.post').hasClass('options')) {
+      $.bbq.pushState({ 'options': true });
+    } else {
+      $.bbq.removeState('options');
+    }
   });
 
   $('.post-options').click(function(e) {
@@ -75,7 +79,7 @@
         return;
       }
       if (data.post.slug != window.location.pathname) {
-        window.location = data.post.slug;
+        window.location = data.post.slug + '#' + $.param.fragment();
       }
       $('.post').data('post-id', data.post.id);
       $('.post .post-title').text(data.post.title);
@@ -107,7 +111,7 @@
     // @todo show saving notification
   });
 
-  $('[name="post-slug"]').on('keyup change', function(e) {
+  $('[name="post-slug"]').on('change', function(e) {
     var slug = $('[name="post-slug"]').val();
     if (slug == '' || slug == '/') {
       return;
@@ -132,5 +136,12 @@
     var slug = title_to_slug(title);
     $('[name="post-slug"]').val(slug);
   });
+
+  $.bbq.getState('editing') && $('.post-content').click();
+  $.bbq.getState('options') && $('.post-options-handle').click();
+
+  if ($('.post-content').text() == '') {
+    $('.post-content').click();
+  }
 
 })();

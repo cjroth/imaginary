@@ -1,36 +1,17 @@
 <header>
-  <div class="navbar navbar-fixed-top">
-    <a class="navbar-brand" href="/"><%= blog.name %></a>
-    <ul class="nav">
-      <li><a href="#new">New Post</a></li>
-      <li><a href="/posts">All Posts</a></li>
-    </ul>
-    <ul class="nav pull-right">
-      <li id="fat-menu" class="dropdown">
-        <a href="#" id="user-dropdown" role="button" class="dropdown-toggle" data-toggle="dropdown"><%= user.first_name %><b class="caret"></b></a>
-        <ul class="dropdown-menu" role="menu" aria-labelledby="user-dropdown">
-          <li role="presentation"><a role="menuitem" tabindex="-1" href="/profile">My Account</a></li>
-          <li role="presentation"><a role="menuitem" tabindex="-1" href="/logout">Logout</a></li>
-        </ul>
-      </li>
-    </ul>
-  </div>
+  <ul class="nav nav-pills">
+    <li class="dropdown pull-right">
+      <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+        <span class="caret"></span>
+      </a>
+      <ul class="dropdown-menu">
+        <li><a href="/"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+        <li><a href="#new"><span class="glyphicon glyphicon-file"></span> New Post</a></li>
+        <li><a href="/posts"><span class="glyphicon glyphicon-book"></span> All Posts</a></li>
+        <li class="divider"></li>
+        <li><a href="/profile"><span class="glyphicon glyphicon-user"></span> My Account</a></li>
+        <li><a href="/logout"><span class="glyphicon glyphicon-off"></span> Logout</a></li>
+      </ul>
+    </li>
+  </ul>
 </header>
-
-<div id="delete-post-modal" class="modal" data-backdrop="false" data-delete-post="">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title"></h4>
-      </div>
-      <div class="modal-body">
-        Are you sure you want to delete this post?
-      </div>
-      <div class="modal-footer">
-        <a id="delete-post" href="#" class="btn btn-danger">Yes, Delete</a>
-        <a id="delete-cancel" href="#" class="btn" data-dismiss="modal">No, Cancel</a>
-      </div>
-    </div>
-  </div>
-</div>
