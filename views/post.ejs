@@ -4,11 +4,9 @@
     <title><%= post.title || 'New Post' %> - <%= blog.name %></title>
     <%- include head %>
   </head>
-  <body id="post">
+  <body class="post">
 
-    <% if (user) { %>
-      <% include header %>
-    <% } %>
+    <% include header %>
 
     <div class="post" data-post-id="<%= post.id || '' %>">
 
@@ -41,8 +39,8 @@
               </label>
             </li>
             <li class="list-group-item btn-group buttons">
-                <a href="#delete" type="button" class="btn btn-danger">Delete</a>
-                <a href="#publish" type="button" class="btn btn-primary">Publish</a>
+                <a href="#delete" type="button" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></a>
+                <a href="#publish" type="button" class="btn btn-primary"><%= post.published_at ? 'Published' : 'Publish' %></a>
             </li>
           </ul>
 
@@ -50,11 +48,13 @@
         <div class="post-options-handle"></div>
       </div>
 
-      <p class="post-footer clearfix">
-        <span class="post-signature<%= (post.getConfig && post.getConfig().include_signature) ? '' : ' hidden' %>">Chris Roth - April 2, 2013</span>
-        <a href="https://twitter.com/share" class="twitter-share-button<%= (post.getConfig && post.getConfig().include_tweet_button) ? '' : ' hidden' %>" data-via="chrisrxth" data-size="large">Tweet</a>
-        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-      </p>
+      <div class="post-footer clearfix">
+        <div>
+          <span class="post-signature<%= (post.getConfig && post.getConfig().include_signature) ? '' : ' hidden' %>">Chris Roth - April 2, 2013</span>
+          <a href="https://twitter.com/share" class="twitter-share-button<%= (post.getConfig && post.getConfig().include_tweet_button) ? '' : ' hidden' %>" data-via="chrisrxth" data-size="large">Tweet</a>
+          <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+        </div>
+      </div>
 
     </div><!-- .post -->
 

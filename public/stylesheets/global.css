@@ -34,11 +34,15 @@ body.posts tr td {
   right: 25px;
 }
 
-.nav .glyphicon {
+.nav .glyphicon:not(:last-child) {
   margin-right: 10px;
 }
 
 /* post */
+body.post {
+  width: 100%;
+  margin: 50px 0 0 0;
+}
 body.edit .post-title {
   font-size: 30px;
   line-height: 30px;
@@ -72,8 +76,11 @@ label {
 .buttons {
   width: 100%;
 }
-.buttons button, .buttons a {
-  width: 50%;
+.post-options .buttons a[href="#delete"] {
+  width: 25%;
+}
+.post-options .buttons a[href="#publish"] {
+  width: 75%;
 }
 textarea.content {
   border: 1px solid #eee;
@@ -132,17 +139,26 @@ textarea.content {
   margin: 0 0 25px;
 }
 .post .post-footer {
-  width: 600px;
-  padding: 0 30px;
+  width: 100%;
+  padding: 40px;
   font-family: 'Allura', cursive;
   font-size: 30px;
-  margin: 40px auto;
+  background: #303030;
+  color: #fff;
+}
+.post .post-footer div {
+  width: 600px;
+  margin: 0 auto;
+  padding: 30px;
 }
 .post.edit .post-footer {
   display: none;
 }
 .twitter-share-button {
   float: right;
+  top: -5px;
+  left: 20px;
+  position: relative;
 }
 .twitter-share-button.hidden {
   display: none;

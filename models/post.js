@@ -24,6 +24,10 @@ module.exports = function(Sequelize, DataTypes) {
           }
         }
         return config;
+      },
+      publish: function(publish_at) {
+        this.published_at = publish_at || new Date();
+        return this;
       }
     }
   });

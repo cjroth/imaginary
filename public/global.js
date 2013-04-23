@@ -1,23 +1,23 @@
 $(document).ready(function() {
   
-  $('[href="#delete"]').click(function() {
+  $('a[href="#delete"]').click(function() {
     var $post = $(this).parents('.post');
     var post_id = $post.data('post-id');
     var post_title = $post.find('.post-title').text();
     var $modal = $('#delete-post-modal');
     $modal.find('.modal-title').text('Delete ' + (post_title ? ('"' +  post_title + '"') : 'Untitled (#' + post_id + ')') + '?');
-    $modal.data('delete-post', post_id);
+    $modal.data('post-id', post_id);
     $modal.modal('toggle');
     return false;
   });
 
-  $('[href="#publish"]').click(function() {
+  $('a[href="#publish"]').click(function() {
     var $post = $(this).parents('.post');
     var post_id = $post.data('post-id');
     var post_title = $post.find('.post-title').text();
     var $modal = $('#publish-post-modal');
     $modal.find('.modal-title').text('Publish ' + (post_title ? ('"' +  post_title + '"') : 'Untitled (#' + post_id + ')') + '?');
-    $modal.data('publish-post', post_id);
+    $modal.data('post-id', post_id);
     $modal.modal('toggle');
     return false;
   });
@@ -33,15 +33,16 @@ $(document).ready(function() {
     });
   });
   
-  $('#delete-post').click(function() {
+  $('a[href="#delete-final"]').click(function() {
     var $modal = $('#delete-post-modal');
-    var post_id = $(this).parents('.modal').data('delete-post');
+    var post_id = $(this).parents('.modal').data('post-id');
     $.post('/delete/' + post_id, function(data) {
       if (!data.result) {
         // @todo handle error
       }
       window.location = '/posts';
     });
+    return false;
   });
 
   var $forms = $('.form');
@@ -56,13 +57,25 @@ $(document).ready(function() {
     return false;
   });
   
-  $('[href="#new"]').click(function() {
+  $('a[href="#new"]').click(function() {
     $.post('/new', function(data) {
       if (!data.result) {
         // @todo handle error...
         return;
       }
       window.location = data.post.slug + '#editing=true';
+    });
+    return false;
+  });
+
+  $('a[href="#publish-final"]').click(function() {
+    var $modal = $('#publish-post-modal');
+    var post_id = $(this).parents('.modal').data('post-id');
+    $.post('/publish/' + post_id, function(data) {
+      if (!data.result) {
+        // @todo handle error
+      }
+      $modal.modal('hide');
     });
     return false;
   });

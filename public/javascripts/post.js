@@ -23,7 +23,7 @@
   });
 
   $(document).bind('click', function(e) {
-    if ($(e.target).parents('.modal-dialog').length) {
+    if ($(e.target).parents('.modal-dialog').length || !$('.post').hasClass('edit')) {
       return;
     }
     $('.post').removeClass('edit');
