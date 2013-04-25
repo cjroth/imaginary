@@ -43,6 +43,9 @@ body.post {
   width: 100%;
   margin: 50px 0 0 0;
 }
+body.editing {
+  background: #eee;
+}
 body.edit .post-title {
   font-size: 30px;
   line-height: 30px;
@@ -211,6 +214,36 @@ textarea.content {
 }
 .post.edit .post-options-handle { display: block; }
 .post.edit.options .edit-container .post-options { display: block; }
+
+*[name="post-published-at-section"] .input-group-btn div {
+  display: none;
+}
+
+*[name="post-published-at-section"].draft .input-group-btn div.draft {
+  display: block;
+}
+
+*[name="post-published-at-section"].published .input-group-btn div.published {
+  display: block;
+}
+
+*[name="post-published-at-section"] .input-group-btn a {
+  display: none;
+}
+
+*[name="post-published-at-section"] .input-group-btn:hover a {
+  display: block;
+}
+
+*[name="post-published-at-section"] .input-group-btn:hover button {
+  display: none;
+}
+
+*[name="post-published-at-section"] .input-group-btn .btn {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
 
 /* login */
 body.login {

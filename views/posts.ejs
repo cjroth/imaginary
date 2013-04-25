@@ -13,7 +13,7 @@
         <% var post = posts[i]; %>
         <tr>
           <td><a class="post-title" href="<%= post.slug %>"><%= post.title || 'Untitled (#' + post.id + ')' %></a></td>
-          <td><span class="post-status"><%= moment(post.published_at).format('MMMM D, YYYY') || 'Draft' %></a></td>
+          <td class="text-right"><span class="post-status"><%= post.published_at && moment(post.published_at).format('MMMM D, YYYY') || 'Draft' %></a></td>
         </tr>
       <% } %>
     </table>

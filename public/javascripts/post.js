@@ -12,7 +12,7 @@
 
   $('.post-content').click(function(e) {
     e.stopPropagation();
-    $('.post').addClass('edit');
+    $('[name="post"]').addClass('edit');
     $('.post-title').hide();
     $('.post-options-handle').position({
       my: 'right center',
@@ -20,15 +20,17 @@
       of: '.edit-content'
     });
     $.bbq.pushState({ editing: true });
+    $('body').addClass('editing');
   });
 
   $(document).bind('click', function(e) {
-    if ($(e.target).parents('.modal-dialog').length || !$('.post').hasClass('edit')) {
+    if ($(e.target).parents('.modal-dialog').length || !$('[name="post"]').hasClass('edit')) {
       return;
     }
-    $('.post').removeClass('edit');
+    $('[name="post"]').removeClass('edit');
     $('.post-title').show();
     $.bbq.removeState('editing');
+    $('body').removeClass('editing');
   });
 
   $('.edit-content').bind('click', function(e) {
@@ -37,18 +39,18 @@
 
   $('.post-options-handle').click(function(e) {
     e.stopPropagation();
-    $('.post').toggleClass('options');
+    $('[name="post"]').toggleClass('options');
     $(this).position({
       my: 'right center',
       at: 'right center',
       of: '.edit-content'
     });
-    $('.post-options .buttons').position({
+    $('.post-options [name="post-published-at-section"]').position({
       my: 'bottom',
       at: 'bottom',
       of: '.post-options'
     });
-    if ($('.post').hasClass('options')) {
+    if ($('[name="post"]').hasClass('options')) {
       $.bbq.pushState({ 'options': true });
     } else {
       $.bbq.removeState('options');
@@ -61,7 +63,7 @@
 
   var serialize_post = function() {
     return {
-      id: $('.post').data('post-id') || undefined,
+      id: $('[name="post"]').data('post-id') || undefined,
       title: $('[name="post-title"]').val(),
       slug: $('[name="post-slug"]').val(),
       content: $('[name="post-content"]').val(),
@@ -119,7 +121,7 @@
     save_post();
   });
 
-  $('[name="post-title"], [name="post-slug"]')
+  $('[name="post-title"], [name="post-slug"], [name="post-published-at"]')
     .focus(function() {
       $(this).parents('.list-group-item').addClass('extended');
     })
@@ -128,7 +130,7 @@
     });
 
   $('[name="post-title"]').keyup(function() {
-    var post_id = $('.post').data('post-id');
+    var post_id = $('[name="post"]').data('post-id');
     if (post_id) {
       return;
     }

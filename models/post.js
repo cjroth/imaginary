@@ -28,6 +28,10 @@ module.exports = function(Sequelize, DataTypes) {
       publish: function(publish_at) {
         this.published_at = publish_at || new Date();
         return this;
+      },
+      unpublish: function() {
+        this.published_at = null;
+        return this;
       }
     }
   });
